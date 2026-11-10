@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richi's Donuts & Cake | Menú Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body { font-family: 'Poppins', sans-serif; }
+    h1, h2, h3, .font-serif-title { font-family: 'Playfair Display', serif; }
+    html { scroll-behavior: smooth; }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Header colapsible */
+    #siteHeader { transition: padding .3s ease, box-shadow .3s ease; }
+    #siteHeader .collapsible {
+      max-height: 500px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height .35s ease, opacity .25s ease;
+    }
+    #siteHeader.compact { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 8px 24px rgba(67, 40, 24, 0.15); }
+    #siteHeader.compact .collapsible { max-height: 0; opacity: 0; }
+    #siteHeader.no-trans,
+    #siteHeader.no-trans .collapsible { transition: none !important; }
+
+    /* Botón de categoría activa */
+    .nav-btn { transition: all .2s; }
+    .nav-btn.active {
+      background: #78350f !important;
+      color: #fff !important;
+      border-color: #92400e !important;
+      box-shadow: 0 4px 12px rgba(120, 53, 15, 0.3);
+    }
+
+    /* Botón volver arriba */
+    #toTop { transition: opacity .25s, transform .25s; }
+    #toTop.hide { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  </style>
+</head>
+<body class="bg-[#fdfbf7] text-stone-800 font-sans pb-32 min-h-screen">
+
+  <!-- CABECERA FIJA Y COLAPSIBLE -->
+  <header id="siteHeader" class="fixed top-0 left-0 w-full z-40 pt-6 pb-4 px-4 bg-gradient-to-b from-[#fffaf3] via-[#fdfbf7] to-[#fdfbf7] text-center border-b border-amber-900/10 backdrop-blur-md bg-opacity-95">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- PARTE QUE SE OCULTA AL BAJAR -->
+      <div class="collapsible">
+        <div class="pb-3 space-y-3">
+
+          <!-- BADGE SUPERIOR -->
+          <div class="inline-block">
+            <span class="border border-amber-800/20 bg-amber-100/60 text-amber-900 text-[10px] sm:text-xs font-semibold px-4 py-1 rounded-full tracking-wider uppercase">
+              ✨ SIN REGLAS, SIN PENA Y CON MUCHO SABOR ✨
+            </span>
+          </div>
+
+          <!-- TÍTULO PRINCIPAL -->
+          <div>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold italic tracking-tight text-amber-950 uppercase">
+              Richi's <span class="text-amber-700 font-normal">DONUTS & CAKE</span>
+            </h1>
+            <p class="text-[11px] sm:text-xs text-stone-600 max-w-lg mx-auto mt-1 italic">
+              "Cada dona, torta o antojo está pensado para disfrutarse, sin culpa y repetirse sin excusas."[cite: 11]
+            </p>
+          </div>
+
+          <!-- BOTONES DE CONTACTO -->
+          <div class="flex flex-wrap justify-center items-center gap-2 text-xs pt-1">
+            <a href="https://wa.me/573115162966" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-amber-900 hover:bg-amber-800 text-amber-50 px-3.5 py-2 rounded-xl font-medium transition shadow-sm">
+              <i class="fa-brands fa-whatsapp text-sm text-emerald-400"></i>
+              <span>Pedir al 311 516 2966</span>[cite: 32]
+            </a>
+
+            <a href="https://wa.me/573124379240" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-stone-900 hover:bg-stone-800 text-stone-100 px-3.5 py-2 rounded-xl font-medium transition shadow-sm">
+              <i class="fa-brands fa-whatsapp text-sm text-emerald-400"></i>
+              <span>312 437 9240</span>[cite: 32]
+            </a>
+
+            <a href="https://instagram.com/richis_baker" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-pink-50 text-pink-900 border border-pink-200 px-3.5 py-2 rounded-xl font-semibold transition hover:bg-pink-100">
+              <i class="fa-brands fa-instagram text-sm text-pink-600"></i>
+              <span>@richis_baker</span>[cite: 32]
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BUSCADOR -->
+      <div class="max-w-2xl mx-auto pt-1">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-amber-800/40 text-xs"></i>
+          <input type="text" id="searchInput" oninput="filterMenu()" placeholder="Buscar donas, tortas, hojaldres, postres..." class="w-full bg-white text-stone-800 placeholder-stone-400 text-xs sm:text-sm pl-11 pr-4 py-2.5 rounded-full border border-amber-900/15 focus:outline-none focus:border-amber-700 shadow-sm transition">
+        </div>
+      </div>
+
+      <!-- FILTROS DE CATEGORÍA -->
+      <nav id="catNav" class="flex justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar pt-3 text-xs font-medium">
+        <button data-cat="donuts" onclick="scrollToCat('donuts')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍩 Donuts</button>[cite: 12]
+        <button data-cat="hojaldres" onclick="scrollToCat('hojaldres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🥐 Hojaldres</button>[cite: 16]
+        <button data-cat="bizcochos" onclick="scrollToCat('bizcochos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍰 Bizcochos & Tortas</button>[cite: 20]
+        <button data-cat="galleteria" onclick="scrollToCat('galleteria')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍪 Galletería</button>[cite: 23]
+        <button data-cat="postres" onclick="scrollToCat('postres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍮 Postres Fríos</button>[cite: 25]
+        <button data-cat="fritos" onclick="scrollToCat('fritos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🥟 Fritos Artesanales</button>[cite: 29]
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Espaciador -->
+  <div id="headerSpacer" style="height:340px"></div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+    <!-- 🍩 DONUTS -->
+    <section id="donuts" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-[#78350f] fa-cookie text-amber-700"></i> Donuts & Eclairs[cite: 12, 15]
+        </h2>
+        <p class="text-xs text-stone-500 mt-1">Donas artesanales preparadas a diario con las mejores coberturas y rellenos[cite: 11, 13].</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- DONAMANÍA FRESA -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Fresa</h4>[cite: 13]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 13]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con chispas de colores y relleno sabor a fresa. (Aprox 60g)[cite: 13]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Fresa', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 13]
+        </div>
+
+        <!-- DONAMANÍA GANACHE MORA -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Ganache Mora</h4>[cite: 13]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 13]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con ganache de chocolate negro y relleno sabor a mora. (Aprox 60g)[cite: 13]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Ganache Mora', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 13]
+        </div>
+
+        <!-- DONAMANÍA OREO -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Oreo</h4>[cite: 13]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 13]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con galleta Oreo y relleno sabor a mora. (Aprox 60g)[cite: 13]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Oreo', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 13]
+        </div>
+
+        <!-- DONAMANÍA CHOCO NEGRO & CHIPS BLANCOS -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Choco-Mora</h4>[cite: 14]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 14]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, con chips de chocolate blanco y relleno sabor a mora. (Aprox 60g)[cite: 14]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Choco-Mora', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 14]
+        </div>
+
+        <!-- DONAMANÍA CHANTILLY -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Chantilly</h4>[cite: 14]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 14]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, chispas de colores y relleno sabor a chantilly. (Aprox 60g)[cite: 14]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Chantilly', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 14]
+        </div>
+
+        <!-- DONAMANÍA MANÍ & AREQUIPE -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Donamanía Maní & Arequipe</h4>[cite: 14]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 14]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, trozos de maní y relleno sabor a arequipe. (Aprox 60g)[cite: 14]</p>
+          </div>
+          <button onclick="addToCart('Donamanía Maní & Arequipe', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 14]
+        </div>
+
+        <!-- DONA CLÁSICA FRUTOS ROJOS -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Dona Clásica Frutos Rojos</h4>[cite: 15]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 15]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, chispas de chocolate y relleno de frutos rojos. (Aprox 60g)[cite: 15]</p>
+          </div>
+          <button onclick="addToCart('Dona Clásica Frutos Rojos', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 15]
+        </div>
+
+        <!-- DONA CLÁSICA AREQUIPE -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Dona Clásica Arequipe</h4>[cite: 15]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 15]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, chispas de chocolate y relleno de arequipe. (Aprox 60g)[cite: 15]</p>
+          </div>
+          <button onclick="addToCart('Dona Clásica Arequipe', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 15]
+        </div>
+
+        <!-- ECLAIR -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1">
+              <h4 class="text-amber-950 font-bold item-name">Eclair de Chocolate</h4>[cite: 15]
+              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 15]
+            </div>
+            <p class="text-stone-500 text-xs mb-3">Cobertura suave de chocolate negro y abundante relleno sabor a chantilly. (Aprox 60g)[cite: 15]</p>
+          </div>
+          <button onclick="addToCart('Eclair de Chocolate', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 15]
+        </div>
+      </div>
+    </section>
+
+    <!-- 🥐 HOJALDRES -->
+    <section id="hojaldres" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-bread-slice text-amber-700"></i> Hojaldres & Croissants[cite: 16, 18]
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel de Pollo</h4>[cite: 17] <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 17]</div>
+            <p class="text-stone-500 text-xs mb-3">Masa hojaldrada crujiente rellena de pollo con bechamel. (Aprox 100g)[cite: 17]</p>
+          </div>
+          <button onclick="addToCart('Pastel de Pollo', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 17]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel de Carne</h4>[cite: 17] <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 17]</div>
+            <p class="text-stone-500 text-xs mb-3">Masa hojaldre con carne molida sazonada y finas hierbas. (Aprox 100g)[cite: 17]</p>
+          </div>
+          <button onclick="addToCart('Pastel de Carne', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 17]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Palito de Queso</h4>[cite: 17] <span class="text-amber-800 font-extrabold text-sm">$3.200</span>[cite: 17]</div>
+            <p class="text-stone-500 text-xs mb-3">Hojaldre relleno de queso campesino y terminado con queso parmesano. (Aprox 90g)[cite: 17]</p>
+          </div>
+          <button onclick="addToCart('Palito de Queso', 3200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>[cite: 17]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant Jamón & Queso</h4>[cite: 18] <span class="text-amber-800 font-extrabold text-sm">$3.700</span>[cite: 18]</div>
+            <p class="text-stone-500 text-xs mb-3">Semi-hojaldre abundante relleno de jamón y queso con ajonjolí. (Aprox 120g)[cite: 18]</p>
+          </div>
+          <button onclick="addToCart('Croissant Jamón y Queso', 3700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.700)</button>[cite: 18]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant de Queso</h4>[cite: 18] <span class="text-amber-800 font-extrabold text-sm">$3.200</span>[cite: 18]</div>
+            <p class="text-stone-500 text-xs mb-3">Relleno de queso campesino fresco y cubierta de parmesano. (Aprox 100g)[cite: 18]</p>
+          </div>
+          <button onclick="addToCart('Croissant de Queso', 3200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>[cite: 18]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant de Arequipe</h4>[cite: 18] <span class="text-amber-800 font-extrabold text-sm">$3.300</span>[cite: 18]</div>
+            <p class="text-stone-500 text-xs mb-3">Masa hojaldrada rellena de dulce de leche y queso campesino. (Aprox 100g)[cite: 18]</p>
+          </div>
+          <button onclick="addToCart('Croissant de Arequipe', 3300)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.300)</button>[cite: 18]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel Hawaiano</h4>[cite: 19] <span class="text-amber-800 font-extrabold text-sm">$3.500</span>[cite: 19]</div>
+            <p class="text-stone-500 text-xs mb-3">Hojaldre con piña en almíbar, jamón y queso campesino. (Aprox 100g)[cite: 19]</p>
+          </div>
+          <button onclick="addToCart('Pastel Hawaiano', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>[cite: 19]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel Gloria</h4>[cite: 19] <span class="text-amber-800 font-extrabold text-sm">$3.000</span>[cite: 19]</div>
+            <p class="text-stone-500 text-xs mb-3">Tradicional hojaldre relleno de abundante dulce de guayaba. (Aprox 90g)[cite: 19]</p>
+          </div>
+          <button onclick="addToCart('Pastel Gloria', 3000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.000)</button>[cite: 19]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Salchicha Hojaldrada</h4>[cite: 19] <span class="text-amber-800 font-extrabold text-sm">$2.700</span>[cite: 19]</div>
+            <p class="text-stone-500 text-xs mb-3">Salchicha ahumada envuelta en masa hojaldrada horneada. (Aprox 100g)[cite: 19]</p>
+          </div>
+          <button onclick="addToCart('Salchicha Hojaldrada', 2700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.700)</button>[cite: 19]
+        </div>
+      </div>
+    </section>
+
+    <!-- 🍰 BIZCOCHOS & TORTAS -->
+    <section id="bizcochos" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-cake-candles text-amber-700"></i> Bizcochos & Tortas[cite: 20, 21]
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Tiramisú Artesanal</h4>[cite: 21] <span class="text-amber-800 font-extrabold text-sm">$5.000</span>[cite: 21]</div>
+            <p class="text-stone-500 text-xs mb-3">Bizcocho humedecido con café, capas de crema de mascarpone y cocoa. (Aprox 200g)[cite: 21]</p>
+          </div>
+          <button onclick="addToCart('Tiramisú Artesanal', 5000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>[cite: 21]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Bizcocho Cítrico</h4>[cite: 21] <span class="text-amber-800 font-extrabold text-sm">$4.700</span>[cite: 21]</div>
+            <p class="text-stone-500 text-xs mb-3">Esponjoso bizcocho de limón con chantilly y ralladura natural. (Aprox 200g)[cite: 21]</p>
+          </div>
+          <button onclick="addToCart('Bizcocho Cítrico', 4700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.700)</button>[cite: 21]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Brownie de Chocolate</h4>[cite: 21] <span class="text-amber-800 font-extrabold text-sm">$5.000</span>[cite: 21]</div>
+            <p class="text-stone-500 text-xs mb-3">Cacao y chocolate real terminado con ganache cremoso. (Aprox 60g)[cite: 21]</p>
+          </div>
+          <button onclick="addToCart('Brownie de Chocolate', 5000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>[cite: 21]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Bizcocho Red Velvet</h4>[cite: 22] <span class="text-amber-800 font-extrabold text-sm">$5.200</span>[cite: 22]</div>
+            <p class="text-stone-500 text-xs mb-3">Miga suave con toque de cacao y frosting de queso crema. (Aprox 200g)[cite: 22]</p>
+          </div>
+          <button onclick="addToCart('Bizcocho Red Velvet', 5200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.200)</button>[cite: 22]
+        </div>
+
+        <!-- TORTAS ENTERAS -->
+        <div class="menu-item bg-amber-50/60 p-4 rounded-2xl border border-amber-900/20 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Torta de Arequipe (Entera)</h4>[cite: 22] <span class="text-amber-800 font-extrabold text-sm">$25.000</span>[cite: 22]</div>
+            <p class="text-stone-500 text-xs mb-3">Torta familiar de vainilla decorada con arequipe. Rinde 12 porciones. (1.2 kg)[cite: 22]</p>
+          </div>
+          <button onclick="addToCart('Torta de Arequipe Entera', 25000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($25.000)</button>[cite: 22]
+        </div>
+
+        <div class="menu-item bg-amber-50/60 p-4 rounded-2xl border border-amber-900/20 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+          <div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Torta de Chocolate (Entera)</h4>[cite: 22] <span class="text-amber-800 font-extrabold text-sm">$30.000</span>[cite: 22]</div>
+            <p class="text-stone-500 text-xs mb-3">Sabor intenso a cacao con crema y ralladura de chocolate. Rinde 12 porciones. (1.2 kg)[cite: 22]</p>
+          </div>
+          <button onclick="addToCart('Torta de Chocolate Entera', 30000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($30.000)</button>[cite: 22]
+        </div>
+      </div>
+    </section>
+
+    <!-- 🍪 GALLETERÍA -->
+    <section id="galleteria" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-[#78350f] fa-cookie-bite text-amber-700"></i> Galletería Artesanal[cite: 23, 24]
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Galleta de Avena</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>[cite: 24]
+          <button onclick="addToCart('Galleta de Avena', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips de Colores</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>[cite: 24]
+          <button onclick="addToCart('Galleta Chips de Colores', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips Chocolate</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>[cite: 24]
+          <button onclick="addToCart('Galleta Chips Chocolate', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips Choco Blanco</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>[cite: 24]
+          <button onclick="addToCart('Galleta Chips Choco Blanco', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Galleta Corazón</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$3.000</p></div>[cite: 24]
+          <button onclick="addToCart('Galleta Corazón', 3000)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+
+        <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><h4 class="font-bold text-amber-950 text-xs item-name">Rollo de Canela</h4>[cite: 24] <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$3.000</p></div>[cite: 24]
+          <button onclick="addToCart('Rollo de Canela', 3000)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>[cite: 24]
+        </div>
+      </div>
+    </section>
+
+    <!-- 🍮 POSTRES FRÍOS -->
+    <section id="postres" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-ice-cream text-amber-700"></i> Postres Fríos (Cheesecakes & Pannacotas)[cite: 25, 26, 28]
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- CHEESECAKES -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Mora</h4>[cite: 26] <span class="text-amber-800 font-extrabold text-sm">$6.000</span>[cite: 26]</div><p class="text-stone-500 text-xs mb-3">Cremoso de queso con dulce de mora casero y fruta. (Aprox 190g)[cite: 26]</p></div>
+          <button onclick="addToCart('Cheesecake de Mora', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>[cite: 26]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Arequipe</h4>[cite: 26] <span class="text-amber-800 font-extrabold text-sm">$6.000</span>[cite: 26]</div><p class="text-stone-500 text-xs mb-3">Capa generosa de arequipe y trozos de queso. (Aprox 190g)[cite: 26]</p></div>
+          <button onclick="addToCart('Cheesecake de Arequipe', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>[cite: 26]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Maracuyá</h4>[cite: 26] <span class="text-amber-800 font-extrabold text-sm">$6.000</span>[cite: 26]</div><p class="text-stone-500 text-xs mb-3">Capa de maracuyá agridulce y chantilly. (Aprox 190g)[cite: 26]</p></div>
+          <button onclick="addToCart('Cheesecake de Maracuyá', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>[cite: 26]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Oreo</h4>[cite: 27] <span class="text-amber-800 font-extrabold text-sm">$6.000</span>[cite: 27]</div><p class="text-stone-500 text-xs mb-3">Galletas Oreo trituradas, ganache y chantilly. (Aprox 190g)[cite: 27]</p></div>
+          <button onclick="addToCart('Cheesecake de Oreo', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>[cite: 27]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Chocolate</h4>[cite: 27] <span class="text-amber-800 font-extrabold text-sm">$6.000</span>[cite: 27]</div><p class="text-stone-500 text-xs mb-3">Ganache de chocolate y chips de chocolate negro. (Aprox 190g)[cite: 27]</p></div>
+          <button onclick="addToCart('Cheesecake de Chocolate', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>[cite: 27]
+        </div>
+
+        <!-- PANNACOTAS -->
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota de Fresa</h4>[cite: 28] <span class="text-amber-800 font-extrabold text-sm">$4.500</span>[cite: 28]</div><p class="text-stone-500 text-xs mb-3">Postre italiano cremoso con dulce de fresa natural. (Aprox 140g)[cite: 28]</p></div>
+          <button onclick="addToCart('Pannacota de Fresa', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>[cite: 28]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota Frutos Amarillos</h4>[cite: 28] <span class="text-amber-800 font-extrabold text-sm">$4.500</span>[cite: 28]</div><p class="text-stone-500 text-xs mb-3">Pulpa de maracuyá, zumo de naranja y mango. (Aprox 140g)[cite: 28]</p></div>
+          <button onclick="addToCart('Pannacota Frutos Amarillos', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>[cite: 28]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota Oreo</h4>[cite: 28] <span class="text-amber-800 font-extrabold text-sm">$4.500</span>[cite: 28]</div><p class="text-stone-500 text-xs mb-3">Base de crema sedosa con topping de galleta Oreo. (Aprox 140g)[cite: 28]</p></div>
+          <button onclick="addToCart('Pannacota Oreo', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>[cite: 28]
+        </div>
+      </div>
+    </section>
+
+    <!-- 🥟 FRITOS ARTESANALES -->
+    <section id="fritos" class="menu-section">
+      <div class="border-b border-amber-900/15 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
+          <i class="fa-solid fa-pepper-hot text-amber-700"></i> Fritos Artesanales & Antojos Salados[cite: 29, 30]
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada de Pollo</h4>[cite: 30] <span class="text-amber-800 font-extrabold text-sm">$2.200</span>[cite: 30]</div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con pollo, arroz y 1/4 de huevo. (Aprox 180g)[cite: 30]</p></div>
+          <button onclick="addToCart('Empanada de Pollo', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>[cite: 30]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada de Carne</h4>[cite: 30] <span class="text-amber-800 font-extrabold text-sm">$2.200</span>[cite: 30]</div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con papa y carne desmechada. (Aprox 180g)[cite: 30]</p></div>
+          <button onclick="addToCart('Empanada de Carne', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>[cite: 30]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada Hawaiana</h4>[cite: 30] <span class="text-amber-800 font-extrabold text-sm">$2.200</span>[cite: 30]</div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita rellena de piña, jamón y queso. (Aprox 180g)[cite: 30]</p></div>
+          <button onclick="addToCart('Empanada Hawaiana', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>[cite: 30]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada Ranchera</h4>[cite: 30] <span class="text-amber-800 font-extrabold text-sm">$2.200</span>[cite: 30]</div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con tocineta, jamón, salchicha y arroz. (Aprox 180g)[cite: 30]</p></div>
+          <button onclick="addToCart('Empanada Ranchera', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>[cite: 30]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pastel de Yuca</h4>[cite: 31] <span class="text-amber-800 font-extrabold text-sm">$2.800</span>[cite: 31]</div><p class="text-stone-500 text-xs mb-3">Masa de yuca crujiente rellena de arroz, pollo y huevo. (Aprox 200g)[cite: 31]</p></div>
+          <button onclick="addToCart('Pastel de Yuca', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>[cite: 31]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Arepa de Huevo</h4>[cite: 31] <span class="text-amber-800 font-extrabold text-sm">$2.800</span>[cite: 31]</div><p class="text-stone-500 text-xs mb-3">Arepa de maíz amarillo crocante rellena de huevo y pollo. (Aprox 180g)[cite: 31]</p></div>
+          <button onclick="addToCart('Arepa de Huevo', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>[cite: 31]
+        </div>
+
+        <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Papa Rellena</h4>[cite: 31] <span class="text-amber-800 font-extrabold text-sm">$2.800</span>[cite: 31]</div><p class="text-stone-500 text-xs mb-3">Masa de papa artesanal frita, rellena de pollo, arroz y huevo. (Aprox 200g)[cite: 31]</p></div>
+          <button onclick="addToCart('Papa Rellena', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>[cite: 31]
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" class="hide fixed right-4 bottom-28 sm:bottom-24 z-40 w-11 h-11 rounded-full bg-amber-900 border border-amber-700 text-amber-100 shadow-lg flex items-center justify-center">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- BARRA FLOTANTE INFERIOR -->
+  <div class="fixed bottom-0 left-0 w-full bg-white/95 border-t border-amber-900/10 p-3 sm:p-4 backdrop-blur-lg z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+
+      <!-- CONTADOR Y TOTAL -->
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
+        <div>
+          <span id="cartCount" class="bg-amber-100 text-amber-950 font-bold text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full border border-amber-900/20">0 ítems</span>
+          <div id="cartTotal" class="text-base sm:text-lg font-extrabold text-amber-950">$0</div>
+        </div>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="flex items-center gap-2 w-full sm:w-auto">
+        <button onclick="openCartModal()" class="flex-1 sm:flex-none bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold px-4 py-2.5 rounded-xl border border-stone-300 transition flex items-center justify-center gap-2 text-xs sm:text-sm">
+          <i class="fa-solid fa-list-check text-amber-800"></i>
+          <span>Revisar Pedido</span>
+        </button>
+
+        <button onclick="sendOrderToWhatsApp()" class="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm shadow-md shadow-emerald-900/20">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Hacer Pedido</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL PEDIDO -->
+  <div id="cartModal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white border border-stone-200 w-full max-w-lg rounded-t-2xl sm:rounded-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-amber-50/50">
+        <h3 class="font-bold text-amber-950 text-base flex items-center gap-2"><i class="fa-solid fa-basket-shopping text-amber-800"></i> Resumen de tu Antojo</h3>
+        <button onclick="closeCartModal()" class="text-stone-400 hover:text-stone-700 p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div id="cartItemsList" class="p-4 overflow-y-auto space-y-3 flex-1 text-xs"></div>
+      <div class="p-4 border-t border-stone-200 space-y-3 bg-stone-50">
+        <div>
+          <label class="text-[10px] uppercase font-bold text-stone-500">Nombre del cliente:</label>
+          <input type="text" id="clientName" placeholder="Tu nombre..." class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+        </div>
+        <div>
+          <label class="text-[10px] uppercase font-bold text-stone-500">Dirección o punto de entrega:</label>
+          <input type="text" id="clientAddress" placeholder="Ej: Calle 123 # 45-67 o Recojo en local" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+        </div>
+        <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Enviar Pedido por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WHATSAPP = '573115162966'; // Número principal de Richi's[cite: 32]
+    const header = document.getElementById('siteHeader');
+    const spacer = document.getElementById('headerSpacer');
+    const searchInput = document.getElementById('searchInput');
+    const modal = document.getElementById('cartModal');
+    const toTop = document.getElementById('toTop');
+    const sections = [...document.querySelectorAll('.menu-section')];
+    const navButtons = [...document.querySelectorAll('#catNav .nav-btn')];
+
+    /* ---------- CARRITO ---------- */
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem('richisCart') || '[]'); } catch (e) {}
+
+    /* ---------- MEDIDAS DEL HEADER ---------- */
+    let expandedH = 340, compactH = 120, threshold = 220;
+
+    function measureHeader() {
+      const wasCompact = header.classList.contains('compact');
+      header.classList.add('no-trans');
+      header.classList.remove('compact');
+      expandedH = header.offsetHeight;
+      header.classList.add('compact');
+      compactH = header.offsetHeight;
+      if (!wasCompact) header.classList.remove('compact');
+      header.classList.remove('no-trans');
+      spacer.style.height = expandedH + 'px';
+      threshold = Math.max(60, expandedH - compactH);
+    }
+
+    function updateHeaderState() {
+      const y = window.scrollY;
+      if (!header.classList.contains('compact') && y > threshold) {
+        header.classList.add('compact');
+      } else if (header.classList.contains('compact') && y < Math.max(0, threshold - 60)) {
+        header.classList.remove('compact');
+      }
+      toTop.classList.toggle('hide', y < 500);
+    }
+
+    /* ---------- NAVEGACIÓN ---------- */
+    let lockUntil = 0;
+
+    function setActive(id) {
+      navButtons.forEach(b => b.classList.toggle('active', b.dataset.cat === id));
+      const btn = navButtons.find(b => b.dataset.cat === id);
+      const nav = btn && btn.parentElement;
+      if (btn && nav) {
+        const target = nav.scrollLeft
+          + btn.getBoundingClientRect().left - nav.getBoundingClientRect().left
+          - (nav.clientWidth - btn.clientWidth) / 2;
+        nav.scrollTo({ left: target, behavior: 'smooth' });
+      }
+    }
+
+    function scrollToCat(id) {
+      if (searchInput.value) { searchInput.value = ''; filterMenu(); }
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - compactH - 12;
+      lockUntil = Date.now() + 1000;
+      setActive(id);
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      setTimeout(() => { lockUntil = 0; onScroll(); }, 1050);
+    }
+
+    function updateSpy() {
+      if (Date.now() < lockUntil) return;
+      const visibles = sections.filter(s => s.offsetParent !== null);
+      if (!visibles.length) return;
+      const line = compactH + 40;
+      let current = visibles[0].id;
+      visibles.forEach(s => { if (s.getBoundingClientRect().top <= line) current = s.id; });
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+        current = visibles[visibles.length - 1].id;
+      }
+      setActive(current);
+    }
+
+    function onScroll() { updateHeaderState(); updateSpy(); }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { onScroll(); ticking = false; });
+    }, { passive: true });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { measureHeader(); onScroll(); }, 150);
+    });
+
+    /* ---------- BUSCADOR ---------- */
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    const noResults = document.createElement('p');
+    noResults.className = 'text-center text-stone-500 text-sm py-12 hidden';
+    noResults.textContent = 'No encontramos antojos con esa búsqueda 🧁';
+    document.querySelector('main').appendChild(noResults);
+
+    function filterMenu() {
+      const q = norm(searchInput.value.trim());
+      document.querySelectorAll('.menu-item').forEach(item => {
+        const text = [...item.querySelectorAll('h3,h4,p,span')].map(e => e.textContent).join(' ');
+        item.style.display = norm(text).includes(q) ? '' : 'none';
+      });
+      let anyVisible = false;
+      sections.forEach(s => {
+        const has = [...s.querySelectorAll('.menu-item')].some(i => i.style.display !== 'none');
+        s.style.display = (!q || has) ? '' : 'none';
+        if (!q || has) anyVisible = true;
+      });
+      noResults.classList.toggle('hidden', anyVisible);
+      onScroll();
+    }
+
+    /* ---------- CARRITO ---------- */
+    function addToCart(name, price) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) existing.qty++; else cart.push({ name, price, qty: 1 });
+      updateCartUI();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((a, i) => a + i.qty, 0);
+      const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
+      document.getElementById('cartCount').innerText = `${count} ítem${count === 1 ? '' : 's'}`;
+      document.getElementById('cartTotal').innerText = `$${total.toLocaleString('es-CO')}`;
+
+      const list = document.getElementById('cartItemsList');
+      list.innerHTML = cart.length === 0
+        ? `<p class="text-stone-400 text-center py-6">No has agregado antojos al pedido aún.</p>`
+        : cart.map((item, index) => `
+            <div class="flex justify-between items-center bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+              <div>
+                <p class="font-bold text-amber-950">${item.name}</p>
+                <p class="text-amber-800 font-extrabold">$${(item.price * item.qty).toLocaleString('es-CO')}</p>
+              </div>
+              <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border border-stone-300">
+                <button onclick="changeQty(${index}, -1)" class="text-stone-500 hover:text-stone-800 px-1.5">-</button>
+                <span class="font-bold text-amber-950 px-1">${item.qty}</span>
+                <button onclick="changeQty(${index}, 1)" class="text-stone-500 hover:text-stone-800 px-1.5">+</button>
+              </div>
+            </div>`).join('');
+
+      try { localStorage.setItem('richisCart', JSON.stringify(cart)); } catch (e) {}
+    }
+
+    /* ---------- MODAL ---------- */
+    function openCartModal() {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCartModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    modal.addEventListener('click', e => { if (e.target === modal) closeCartModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCartModal(); });
+
+    /* ---------- WHATSAPP ---------- */
+    function sendOrderToWhatsApp() {
+      if (cart.length === 0) { alert('Agrega al menos un ítem a tu pedido antes de enviar.'); return; }
+      const name = document.getElementById('clientName').value.trim() || 'Cliente';
+      const address = document.getElementById('clientAddress').value.trim() || 'Recojo en local';
+      const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
+
+     const lines = [
+  `*NUEVO PEDIDO - RICHI'S DONUTS & CAKE* 🍩`,
+        `👤 *Cliente:* ${name}`,
+        `📍 *Entrega/Dirección:* ${address}`,
+        ``,
+        `📋 *Detalle del pedido:*`,
+        ...cart.map(i => `• ${i.qty}x ${i.name} - *$${(i.price * i.qty).toLocaleString('es-CO')}*`),
+        ``,
+        `💰 *TOTAL:* *$${total.toLocaleString('es-CO')}*`,
+        ``,
+        `_Pedido generado desde el Menú Digital Richi's_`
+      ];
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+      closeCartModal();
+    }
+
+    /* ---------- INIT ---------- */
+    window.addEventListener('load', () => { measureHeader(); onScroll(); });
+    document.fonts && document.fonts.ready.then(() => { measureHeader(); onScroll(); });
+    updateCartUI();
+    measureHeader();
+    onScroll();
+  </script>
+</body>
+</html>
