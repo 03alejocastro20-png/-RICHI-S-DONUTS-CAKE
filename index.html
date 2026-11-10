@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Richi's Donuts & Cake | Menú Digital</title>
+  <title>Richi's Donuts & Cake | Menú Digital & Ventas Institucionales</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -62,10 +62,10 @@
 
           <!-- LOGO OFICIAL -->
           <div class="flex flex-col items-center justify-center">
-           <img src="img/LOGO%20RICHI%C2%B4S%20NEGRO-01.png" alt="Richi's Donuts & Cake" class="h-24 sm:h-36 max-w-[85%] object-contain mx-auto drop-shadow-sm transition-transform duration-300 hover:scale-105">
-           <p class="text-[11px] sm:text-xs text-stone-800 font-bold max-w-lg mx-auto mt-2 italic uppercase -skew-x-6">
-             "CADA DONA, TORTA O ANTOJO ESTÁ PENSADO PARA DISFRUTARSE, SIN CULPA Y REPETIRSE SIN EXCUSAS."
-          </p>
+            <img src="img/LOGO%20RICHI%C2%B4S%20NEGRO-01.png" alt="Richi's Donuts & Cake" class="h-24 sm:h-36 max-w-[85%] object-contain mx-auto drop-shadow-sm transition-transform duration-300 hover:scale-105">
+            <p class="text-[11px] sm:text-xs text-stone-800 font-bold max-w-lg mx-auto mt-2 italic uppercase -skew-x-6">
+              "CADA DONA, TORTA O ANTOJO ESTÁ PENSADO PARA DISFRUTARSE, SIN CULPA Y REPETIRSE SIN EXCUSAS."
+            </p>
           </div>
 
           <!-- BOTONES DE CONTACTO -->
@@ -105,13 +105,14 @@
         <button data-cat="galleteria" onclick="scrollToCat('galleteria')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍪 Galletería</button>
         <button data-cat="postres" onclick="scrollToCat('postres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍮 Postres Fríos</button>
         <button data-cat="fritos" onclick="scrollToCat('fritos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🥟 Fritos Artesanales</button>
+        <button data-cat="institucional" onclick="scrollToCat('institucional')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-amber-100 text-amber-950 font-bold border border-amber-900/30 hover:bg-amber-900 hover:text-white shadow-sm">🏫 Por Mayor / Institución</button>
       </nav>
 
     </div>
   </header>
 
   <!-- Espaciador -->
-  <div id="headerSpacer" style="height:340px"></div>
+  <div id="headerSpacer" style="height:360px"></div>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
@@ -507,6 +508,66 @@
       </div>
     </section>
 
+    <!-- 🏫 VENTAS AL POR MAYOR & INSTITUCIONAL -->
+    <section id="institucional" class="menu-section bg-amber-950 text-amber-50 p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
+      <div class="relative z-10 space-y-6">
+        
+        <div class="border-b border-amber-800/40 pb-4">
+          <span class="bg-amber-800/60 text-amber-200 text-[10px] sm:text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+            Atención Especial para Entidades & Eventos
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-amber-100 mt-2 flex items-center gap-3">
+            <i class="fa-solid fa-building-columns text-amber-400"></i> Ventas Institucionales & Por Mayor
+          </h2>
+          <p class="text-stone-300 text-xs sm:text-sm mt-1 max-w-2xl">
+            Surtimos cafeterías escolares, eventos universitarios, bazares y reuniones corporativas con precios preferenciales por volumen y producción fresca garantizada.
+          </p>
+        </div>
+
+        <!-- TARJETAS DE BENEFICIOS -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+              <i class="fa-solid fa-percent"></i>
+            </div>
+            <h4 class="font-bold text-sm text-amber-100">Descuentos por Volumen</h4>
+            <p class="text-stone-300 text-xs mt-1">Precios escalonados según la cantidad para pedidos periódicos o eventos masivos.</p>
+          </div>
+
+          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <h4 class="font-bold text-sm text-amber-100">Entregas Programadas</h4>
+            <p class="text-stone-300 text-xs mt-1">Despacho puntual en la sede de tu colegio, universidad o empresa desde temprano.</p>
+          </div>
+
+          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h4 class="font-bold text-sm text-amber-100">Empaque Especial</h4>
+            <p class="text-stone-300 text-xs mt-1">Presentación individual o en cajas máster optimizadas para venta en cafeterías.</p>
+          </div>
+
+        </div>
+
+        <!-- BOTÓN ACCIÓN WHATSAPP -->
+        <div class="bg-amber-900/60 border border-amber-600/40 p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 class="font-bold text-sm sm:text-base text-white">¿Necesitas una cotización formal o degustación?</h4>
+            <p class="text-stone-300 text-xs">Habla directamente con nuestro asesor comercial de Richi's.</p>
+          </div>
+          <a href="https://wa.me/573115162966?text=Hola%20Richi's%2C%20quisiera%20solicitar%20informaci%C3%B3n%20para%20compras%20institucionales%2Fal%20por%20mayor." target="_blank" rel="noopener" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold px-6 py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm shadow-lg whitespace-nowrap">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Solicitar Cotización Mayorista</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- BOTÓN VOLVER ARRIBA -->
@@ -582,7 +643,7 @@
     try { cart = JSON.parse(localStorage.getItem('richisCart') || '[]'); } catch (e) {}
 
     /* ---------- MEDIDAS DEL HEADER ---------- */
-    let expandedH = 340, compactH = 120, threshold = 220;
+    let expandedH = 360, compactH = 120, threshold = 220;
 
     function measureHeader() {
       const wasCompact = header.classList.contains('compact');
