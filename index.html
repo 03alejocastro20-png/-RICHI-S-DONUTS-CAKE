@@ -24,7 +24,7 @@
       overflow: hidden;
       transition: max-height .35s ease, opacity .25s ease;
     }
-    #siteHeader.compact { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 8px 24px rgba(67, 40, 24, 0.15); }
+    #siteHeader.compact { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
     #siteHeader.compact .collapsible { max-height: 0; opacity: 0; }
     #siteHeader.no-trans,
     #siteHeader.no-trans .collapsible { transition: none !important; }
@@ -32,10 +32,10 @@
     /* Botón de categoría activa */
     .nav-btn { transition: all .2s; }
     .nav-btn.active {
-      background: #78350f !important;
+      background: #000000 !important;
       color: #fff !important;
-      border-color: #92400e !important;
-      box-shadow: 0 4px 12px rgba(120, 53, 15, 0.3);
+      border-color: #1c1917 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     /* Botón volver arriba */
@@ -43,10 +43,10 @@
     #toTop.hide { opacity: 0; transform: translateY(10px); pointer-events: none; }
   </style>
 </head>
-<body class="bg-[#fdfbf7] text-stone-800 font-sans pb-32 min-h-screen">
+<body class="bg-[#fafafa] text-stone-900 font-sans pb-32 min-h-screen">
 
   <!-- CABECERA FIJA Y COLAPSIBLE -->
-  <header id="siteHeader" class="fixed top-0 left-0 w-full z-40 pt-6 pb-4 px-4 bg-gradient-to-b from-[#fffaf3] via-[#fdfbf7] to-[#fdfbf7] text-center border-b border-amber-900/10 backdrop-blur-md bg-opacity-95">
+  <header id="siteHeader" class="fixed top-0 left-0 w-full z-40 pt-6 pb-4 px-4 bg-gradient-to-b from-stone-50 via-[#fafafa] to-[#fafafa] text-center border-b border-stone-200 backdrop-blur-md bg-opacity-95">
     <div class="max-w-7xl mx-auto">
 
       <!-- PARTE QUE SE OCULTA AL BAJAR -->
@@ -55,7 +55,7 @@
 
           <!-- BADGE SUPERIOR -->
           <div class="inline-block">
-            <span class="border border-amber-800/20 bg-amber-100/60 text-amber-900 text-[10px] sm:text-xs font-semibold px-4 py-1 rounded-full tracking-wider uppercase">
+            <span class="border border-stone-300 bg-stone-100 text-stone-900 text-[10px] sm:text-xs font-semibold px-4 py-1 rounded-full tracking-wider uppercase">
               ✨ SIN REGLAS, SIN PENA Y CON MUCHO SABOR ✨
             </span>
           </div>
@@ -63,14 +63,14 @@
           <!-- LOGO OFICIAL -->
           <div class="flex flex-col items-center justify-center">
             <img src="img/LOGO%20RICHI%C2%B4S%20NEGRO-01.png" alt="Richi's Donuts & Cake" class="h-24 sm:h-36 max-w-[85%] object-contain mx-auto drop-shadow-sm transition-transform duration-300 hover:scale-105">
-            <p class="text-[11px] sm:text-xs text-stone-800 font-bold max-w-lg mx-auto mt-2 italic uppercase -skew-x-6">
+            <p class="text-[11px] sm:text-xs text-stone-900 font-bold max-w-lg mx-auto mt-2 italic uppercase -skew-x-6">
               "CADA DONA, TORTA O ANTOJO ESTÁ PENSADO PARA DISFRUTARSE, SIN CULPA Y REPETIRSE SIN EXCUSAS."
             </p>
           </div>
 
           <!-- BOTONES DE CONTACTO -->
           <div class="flex flex-wrap justify-center items-center gap-2 text-xs pt-1">
-            <a href="https://wa.me/573115162966" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-amber-900 hover:bg-amber-800 text-amber-50 px-3.5 py-2 rounded-xl font-medium transition shadow-sm">
+            <a href="https://wa.me/573115162966" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-black hover:bg-stone-800 text-white px-3.5 py-2 rounded-xl font-medium transition shadow-sm">
               <i class="fa-brands fa-whatsapp text-sm text-emerald-400"></i>
               <span>Pedir al 311 516 2966</span>
             </a>
@@ -80,7 +80,7 @@
               <span>312 437 9240</span>
             </a>
 
-            <a href="https://instagram.com/richis_baker" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-pink-50 text-pink-900 border border-pink-200 px-3.5 py-2 rounded-xl font-semibold transition hover:bg-pink-100">
+            <a href="https://instagram.com/richis_baker" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-stone-100 text-stone-900 border border-stone-300 px-3.5 py-2 rounded-xl font-semibold transition hover:bg-stone-200">
               <i class="fa-brands fa-instagram text-sm text-pink-600"></i>
               <span>@richis_baker</span>
             </a>
@@ -92,20 +92,20 @@
       <!-- BUSCADOR -->
       <div class="max-w-2xl mx-auto pt-1">
         <div class="relative">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-amber-800/40 text-xs"></i>
-          <input type="text" id="searchInput" oninput="filterMenu()" placeholder="Buscar donas, tortas, hojaldres, postres..." class="w-full bg-white text-stone-800 placeholder-stone-400 text-xs sm:text-sm pl-11 pr-4 py-2.5 rounded-full border border-amber-900/15 focus:outline-none focus:border-amber-700 shadow-sm transition">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+          <input type="text" id="searchInput" oninput="filterMenu()" placeholder="Buscar donas, tortas, hojaldres, postres..." class="w-full bg-white text-stone-900 placeholder-stone-400 text-xs sm:text-sm pl-11 pr-4 py-2.5 rounded-full border border-stone-300 focus:outline-none focus:border-black shadow-sm transition">
         </div>
       </div>
 
       <!-- FILTROS DE CATEGORÍA -->
       <nav id="catNav" class="flex justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar pt-3 text-xs font-medium">
-        <button data-cat="donuts" onclick="scrollToCat('donuts')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍩 Donuts</button>
-        <button data-cat="hojaldres" onclick="scrollToCat('hojaldres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🥐 Hojaldres</button>
-        <button data-cat="bizcochos" onclick="scrollToCat('bizcochos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍰 Bizcochos & Tortas</button>
-        <button data-cat="galleteria" onclick="scrollToCat('galleteria')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍪 Galletería</button>
-        <button data-cat="postres" onclick="scrollToCat('postres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🍮 Postres Fríos</button>
-        <button data-cat="fritos" onclick="scrollToCat('fritos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-amber-800 hover:text-white border border-stone-200 shadow-sm">🥟 Fritos Artesanales</button>
-        <button data-cat="institucional" onclick="scrollToCat('institucional')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-amber-100 text-amber-950 font-bold border border-amber-900/30 hover:bg-amber-900 hover:text-white shadow-sm">🏫 Por Mayor / Institución</button>
+        <button data-cat="donuts" onclick="scrollToCat('donuts')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🍩 Donuts</button>
+        <button data-cat="hojaldres" onclick="scrollToCat('hojaldres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🥐 Hojaldres</button>
+        <button data-cat="bizcochos" onclick="scrollToCat('bizcochos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🍰 Bizcochos & Tortas</button>
+        <button data-cat="galleteria" onclick="scrollToCat('galleteria')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🍪 Galletería</button>
+        <button data-cat="postres" onclick="scrollToCat('postres')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🍮 Postres Fríos</button>
+        <button data-cat="fritos" onclick="scrollToCat('fritos')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-white text-stone-700 hover:bg-black hover:text-white border border-stone-200 shadow-sm">🥟 Fritos Artesanales</button>
+        <button data-cat="institucional" onclick="scrollToCat('institucional')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-full bg-stone-200 text-black font-bold border border-stone-400 hover:bg-black hover:text-white shadow-sm">🏫 Por Mayor / Institución</button>
       </nav>
 
     </div>
@@ -119,9 +119,9 @@
 
     <!-- 🍩 DONUTS -->
     <section id="donuts" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-cookie text-amber-700"></i> Donuts & Eclairs
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-cookie text-stone-800"></i> Donuts & Eclairs
         </h2>
         <p class="text-xs text-stone-500 mt-1">Donas artesanales preparadas a diario con las mejores coberturas y rellenos.</p>
       </div>
@@ -130,396 +130,396 @@
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Fresa</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Fresa</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con chispas de colores y relleno sabor a fresa. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Fresa', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Fresa', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Ganache Mora</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Ganache Mora</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con ganache de chocolate negro y relleno sabor a mora. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Ganache Mora', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Ganache Mora', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Oreo</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Oreo</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, con galleta Oreo y relleno sabor a mora. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Oreo', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Oreo', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Choco-Mora</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Choco-Mora</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, con chips de chocolate blanco y relleno sabor a mora. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Choco-Mora', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Choco-Mora', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Chantilly</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Chantilly</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, chispas de colores y relleno sabor a chantilly. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Chantilly', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Chantilly', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Donamanía Maní & Arequipe</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Donamanía Maní & Arequipe</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, trozos de maní y relleno sabor a arequipe. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Donamanía Maní & Arequipe', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Donamanía Maní & Arequipe', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Dona Clásica Frutos Rojos</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Dona Clásica Frutos Rojos</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate blanco, chispas de chocolate y relleno de frutos rojos. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Dona Clásica Frutos Rojos', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Dona Clásica Frutos Rojos', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Dona Clásica Arequipe</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Dona Clásica Arequipe</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura de chocolate negro, chispas de chocolate y relleno de arequipe. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Dona Clásica Arequipe', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Dona Clásica Arequipe', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start gap-2 mb-1">
-              <h4 class="text-amber-950 font-bold item-name">Eclair de Chocolate</h4>
-              <span class="text-amber-800 font-extrabold text-sm">$3.500</span>
+              <h4 class="text-stone-900 font-bold item-name">Eclair de Chocolate</h4>
+              <span class="text-black font-extrabold text-sm">$3.500</span>
             </div>
             <p class="text-stone-500 text-xs mb-3">Cobertura suave de chocolate negro y abundante relleno sabor a chantilly. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Eclair de Chocolate', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Eclair de Chocolate', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
       </div>
     </section>
 
     <!-- 🥐 HOJALDRES -->
     <section id="hojaldres" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-bread-slice text-amber-700"></i> Hojaldres & Croissants
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-bread-slice text-stone-800"></i> Hojaldres & Croissants
         </h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel de Pollo</h4> <span class="text-amber-800 font-extrabold text-sm">$3.500</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Pastel de Pollo</h4> <span class="text-black font-extrabold text-sm">$3.500</span></div>
             <p class="text-stone-500 text-xs mb-3">Masa hojaldrada crujiente rellena de pollo con bechamel. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Pastel de Pollo', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Pastel de Pollo', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel de Carne</h4> <span class="text-amber-800 font-extrabold text-sm">$3.500</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Pastel de Carne</h4> <span class="text-black font-extrabold text-sm">$3.500</span></div>
             <p class="text-stone-500 text-xs mb-3">Masa hojaldre con carne molida sazonada y finas hierbas. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Pastel de Carne', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Pastel de Carne', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Palito de Queso</h4> <span class="text-amber-800 font-extrabold text-sm">$3.200</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Palito de Queso</h4> <span class="text-black font-extrabold text-sm">$3.200</span></div>
             <p class="text-stone-500 text-xs mb-3">Hojaldre relleno de queso campesino y terminado con queso parmesano. (Aprox 90g)</p>
           </div>
-          <button onclick="addToCart('Palito de Queso', 3200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>
+          <button onclick="addToCart('Palito de Queso', 3200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant Jamón & Queso</h4> <span class="text-amber-800 font-extrabold text-sm">$3.700</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Croissant Jamón & Queso</h4> <span class="text-black font-extrabold text-sm">$3.700</span></div>
             <p class="text-stone-500 text-xs mb-3">Semi-hojaldre abundante relleno de jamón y queso con ajonjolí. (Aprox 120g)</p>
           </div>
-          <button onclick="addToCart('Croissant Jamón y Queso', 3700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.700)</button>
+          <button onclick="addToCart('Croissant Jamón y Queso', 3700)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.700)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant de Queso</h4> <span class="text-amber-800 font-extrabold text-sm">$3.200</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Croissant de Queso</h4> <span class="text-black font-extrabold text-sm">$3.200</span></div>
             <p class="text-stone-500 text-xs mb-3">Relleno de queso campesino fresco y cubierta de parmesano. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Croissant de Queso', 3200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>
+          <button onclick="addToCart('Croissant de Queso', 3200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Croissant de Arequipe</h4> <span class="text-amber-800 font-extrabold text-sm">$3.300</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Croissant de Arequipe</h4> <span class="text-black font-extrabold text-sm">$3.300</span></div>
             <p class="text-stone-500 text-xs mb-3">Masa hojaldrada rellena de dulce de leche y queso campesino. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Croissant de Arequipe', 3300)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.300)</button>
+          <button onclick="addToCart('Croissant de Arequipe', 3300)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.300)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel Hawaiano</h4> <span class="text-amber-800 font-extrabold text-sm">$3.500</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Pastel Hawaiano</h4> <span class="text-black font-extrabold text-sm">$3.500</span></div>
             <p class="text-stone-500 text-xs mb-3">Hojaldre con piña en almíbar, jamón y queso campesino. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Pastel Hawaiano', 3500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
+          <button onclick="addToCart('Pastel Hawaiano', 3500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Pastel Gloria</h4> <span class="text-amber-800 font-extrabold text-sm">$3.000</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Pastel Gloria</h4> <span class="text-black font-extrabold text-sm">$3.000</span></div>
             <p class="text-stone-500 text-xs mb-3">Tradicional hojaldre relleno de abundante dulce de guayaba. (Aprox 90g)</p>
           </div>
-          <button onclick="addToCart('Pastel Gloria', 3000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.000)</button>
+          <button onclick="addToCart('Pastel Gloria', 3000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($3.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Salchicha Hojaldrada</h4> <span class="text-amber-800 font-extrabold text-sm">$2.700</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Salchicha Hojaldrada</h4> <span class="text-black font-extrabold text-sm">$2.700</span></div>
             <p class="text-stone-500 text-xs mb-3">Salchicha ahumada envuelta en masa hojaldrada horneada. (Aprox 100g)</p>
           </div>
-          <button onclick="addToCart('Salchicha Hojaldrada', 2700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.700)</button>
+          <button onclick="addToCart('Salchicha Hojaldrada', 2700)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.700)</button>
         </div>
       </div>
     </section>
 
     <!-- 🍰 BIZCOCHOS & TORTAS -->
     <section id="bizcochos" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-cake-candles text-amber-700"></i> Bizcochos & Tortas
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-cake-candles text-stone-800"></i> Bizcochos & Tortas
         </h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Tiramisú Artesanal</h4> <span class="text-amber-800 font-extrabold text-sm">$5.000</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Tiramisú Artesanal</h4> <span class="text-black font-extrabold text-sm">$5.000</span></div>
             <p class="text-stone-500 text-xs mb-3">Bizcocho humedecido con café, capas de crema de mascarpone y cocoa. (Aprox 200g)</p>
           </div>
-          <button onclick="addToCart('Tiramisú Artesanal', 5000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>
+          <button onclick="addToCart('Tiramisú Artesanal', 5000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Bizcocho Cítrico</h4> <span class="text-amber-800 font-extrabold text-sm">$4.700</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Bizcocho Cítrico</h4> <span class="text-black font-extrabold text-sm">$4.700</span></div>
             <p class="text-stone-500 text-xs mb-3">Esponjoso bizcocho de limón con chantilly y ralladura natural. (Aprox 200g)</p>
           </div>
-          <button onclick="addToCart('Bizcocho Cítrico', 4700)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.700)</button>
+          <button onclick="addToCart('Bizcocho Cítrico', 4700)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.700)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Brownie de Chocolate</h4> <span class="text-amber-800 font-extrabold text-sm">$5.000</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Brownie de Chocolate</h4> <span class="text-black font-extrabold text-sm">$5.000</span></div>
             <p class="text-stone-500 text-xs mb-3">Cacao y chocolate real terminado con ganache cremoso. (Aprox 60g)</p>
           </div>
-          <button onclick="addToCart('Brownie de Chocolate', 5000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>
+          <button onclick="addToCart('Brownie de Chocolate', 5000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Bizcocho Red Velvet</h4> <span class="text-amber-800 font-extrabold text-sm">$5.200</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Bizcocho Red Velvet</h4> <span class="text-black font-extrabold text-sm">$5.200</span></div>
             <p class="text-stone-500 text-xs mb-3">Miga suave con toque de cacao y frosting de queso crema. (Aprox 200g)</p>
           </div>
-          <button onclick="addToCart('Bizcocho Red Velvet', 5200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.200)</button>
+          <button onclick="addToCart('Bizcocho Red Velvet', 5200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($5.200)</button>
         </div>
 
-        <div class="menu-item bg-amber-50/60 p-4 rounded-2xl border border-amber-900/20 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+        <div class="menu-item bg-stone-100 p-4 rounded-2xl border border-stone-300 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Torta de Arequipe (Entera)</h4> <span class="text-amber-800 font-extrabold text-sm">$25.000</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Torta de Arequipe (Entera)</h4> <span class="text-black font-extrabold text-sm">$25.000</span></div>
             <p class="text-stone-500 text-xs mb-3">Torta familiar de vainilla decorada con arequipe. Rinde 12 porciones. (1.2 kg)</p>
           </div>
-          <button onclick="addToCart('Torta de Arequipe Entera', 25000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($25.000)</button>
+          <button onclick="addToCart('Torta de Arequipe Entera', 25000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($25.000)</button>
         </div>
 
-        <div class="menu-item bg-amber-50/60 p-4 rounded-2xl border border-amber-900/20 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+        <div class="menu-item bg-stone-100 p-4 rounded-2xl border border-stone-300 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
           <div>
-            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-amber-950 font-bold item-name">Torta de Chocolate (Entera)</h4> <span class="text-amber-800 font-extrabold text-sm">$30.000</span></div>
+            <div class="flex justify-between items-start gap-2 mb-1"><h4 class="text-stone-900 font-bold item-name">Torta de Chocolate (Entera)</h4> <span class="text-black font-extrabold text-sm">$30.000</span></div>
             <p class="text-stone-500 text-xs mb-3">Sabor intenso a cacao con crema y ralladura de chocolate. Rinde 12 porciones. (1.2 kg)</p>
           </div>
-          <button onclick="addToCart('Torta de Chocolate Entera', 30000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($30.000)</button>
+          <button onclick="addToCart('Torta de Chocolate Entera', 30000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($30.000)</button>
         </div>
       </div>
     </section>
 
     <!-- 🍪 GALLETERÍA -->
     <section id="galleteria" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-cookie-bite text-amber-700"></i> Galletería Artesanal
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-cookie-bite text-stone-800"></i> Galletería Artesanal
         </h2>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Galleta de Avena</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
-          <button onclick="addToCart('Galleta de Avena', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Galleta de Avena</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
+          <button onclick="addToCart('Galleta de Avena', 2800)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
 
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips de Colores</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
-          <button onclick="addToCart('Galleta Chips de Colores', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Chips de Colores</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
+          <button onclick="addToCart('Galleta Chips de Colores', 2800)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
 
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips Chocolate</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
-          <button onclick="addToCart('Galleta Chips Chocolate', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Chips Chocolate</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
+          <button onclick="addToCart('Galleta Chips Chocolate', 2800)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
 
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Chips Choco Blanco</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
-          <button onclick="addToCart('Galleta Chips Choco Blanco', 2800)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Chips Choco Blanco</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$2.800</p></div>
+          <button onclick="addToCart('Galleta Chips Choco Blanco', 2800)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
 
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Galleta Corazón</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$3.000</p></div>
-          <button onclick="addToCart('Galleta Corazón', 3000)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Galleta Corazón</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$3.000</p></div>
+          <button onclick="addToCart('Galleta Corazón', 3000)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
 
         <div class="menu-item bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><h4 class="font-bold text-amber-950 text-xs item-name">Rollo de Canela</h4> <p class="text-amber-800 font-extrabold text-xs mt-1 mb-2">$3.000</p></div>
-          <button onclick="addToCart('Rollo de Canela', 3000)" class="w-full bg-stone-100 hover:bg-amber-900 hover:text-white text-amber-950 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
+          <div><h4 class="font-bold text-stone-900 text-xs item-name">Rollo de Canela</h4> <p class="text-black font-extrabold text-xs mt-1 mb-2">$3.000</p></div>
+          <button onclick="addToCart('Rollo de Canela', 3000)" class="w-full bg-stone-100 hover:bg-black hover:text-white text-stone-900 font-semibold py-1.5 rounded-lg text-[11px] transition">+ Agregar</button>
         </div>
       </div>
     </section>
 
     <!-- 🍮 POSTRES FRÍOS -->
     <section id="postres" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-ice-cream text-amber-700"></i> Postres Fríos (Cheesecakes & Pannacotas)
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-ice-cream text-stone-800"></i> Postres Fríos (Cheesecakes & Pannacotas)
         </h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Mora</h4> <span class="text-amber-800 font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Cremoso de queso con dulce de mora casero y fruta. (Aprox 190g)</p></div>
-          <button onclick="addToCart('Cheesecake de Mora', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Cheesecake de Mora</h4> <span class="text-black font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Cremoso de queso con dulce de mora casero y fruta. (Aprox 190g)</p></div>
+          <button onclick="addToCart('Cheesecake de Mora', 6000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Arequipe</h4> <span class="text-amber-800 font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Capa generosa de arequipe y trozos de queso. (Aprox 190g)</p></div>
-          <button onclick="addToCart('Cheesecake de Arequipe', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Cheesecake de Arequipe</h4> <span class="text-black font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Capa generosa de arequipe y trozos de queso. (Aprox 190g)</p></div>
+          <button onclick="addToCart('Cheesecake de Arequipe', 6000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Maracuyá</h4> <span class="text-amber-800 font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Capa de maracuyá agridulce y chantilly. (Aprox 190g)</p></div>
-          <button onclick="addToCart('Cheesecake de Maracuyá', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Cheesecake de Maracuyá</h4> <span class="text-black font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Capa de maracuyá agridulce y chantilly. (Aprox 190g)</p></div>
+          <button onclick="addToCart('Cheesecake de Maracuyá', 6000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Oreo</h4> <span class="text-amber-800 font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Galletas Oreo trituradas, ganache y chantilly. (Aprox 190g)</p></div>
-          <button onclick="addToCart('Cheesecake de Oreo', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Cheesecake de Oreo</h4> <span class="text-black font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Galletas Oreo trituradas, ganache y chantilly. (Aprox 190g)</p></div>
+          <button onclick="addToCart('Cheesecake de Oreo', 6000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Cheesecake de Chocolate</h4> <span class="text-amber-800 font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Ganache de chocolate y chips de chocolate negro. (Aprox 190g)</p></div>
-          <button onclick="addToCart('Cheesecake de Chocolate', 6000)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Cheesecake de Chocolate</h4> <span class="text-black font-extrabold text-sm">$6.000</span></div><p class="text-stone-500 text-xs mb-3">Ganache de chocolate y chips de chocolate negro. (Aprox 190g)</p></div>
+          <button onclick="addToCart('Cheesecake de Chocolate', 6000)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($6.000)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota de Fresa</h4> <span class="text-amber-800 font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Postre italiano cremoso con dulce de fresa natural. (Aprox 140g)</p></div>
-          <button onclick="addToCart('Pannacota de Fresa', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Pannacota de Fresa</h4> <span class="text-black font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Postre italiano cremoso con dulce de fresa natural. (Aprox 140g)</p></div>
+          <button onclick="addToCart('Pannacota de Fresa', 4500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota Frutos Amarillos</h4> <span class="text-amber-800 font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Pulpa de maracuyá, zumo de naranja y mango. (Aprox 140g)</p></div>
-          <button onclick="addToCart('Pannacota Frutos Amarillos', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Pannacota Frutos Amarillos</h4> <span class="text-black font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Pulpa de maracuyá, zumo de naranja y mango. (Aprox 140g)</p></div>
+          <button onclick="addToCart('Pannacota Frutos Amarillos', 4500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pannacota Oreo</h4> <span class="text-amber-800 font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Base de crema sedosa con topping de galleta Oreo. (Aprox 140g)</p></div>
-          <button onclick="addToCart('Pannacota Oreo', 4500)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Pannacota Oreo</h4> <span class="text-black font-extrabold text-sm">$4.500</span></div><p class="text-stone-500 text-xs mb-3">Base de crema sedosa con topping de galleta Oreo. (Aprox 140g)</p></div>
+          <button onclick="addToCart('Pannacota Oreo', 4500)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($4.500)</button>
         </div>
       </div>
     </section>
 
     <!-- 🥟 FRITOS ARTESANALES -->
     <section id="fritos" class="menu-section">
-      <div class="border-b border-amber-900/15 pb-2 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-amber-950 flex items-center gap-2">
-          <i class="fa-solid fa-pepper-hot text-amber-700"></i> Fritos Artesanales & Antojos Salados
+      <div class="border-b border-stone-200 pb-2 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-black flex items-center gap-2">
+          <i class="fa-solid fa-pepper-hot text-stone-800"></i> Fritos Artesanales & Antojos Salados
         </h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada de Pollo</h4> <span class="text-amber-800 font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con pollo, arroz y 1/4 de huevo. (Aprox 180g)</p></div>
-          <button onclick="addToCart('Empanada de Pollo', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Empanada de Pollo</h4> <span class="text-black font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con pollo, arroz y 1/4 de huevo. (Aprox 180g)</p></div>
+          <button onclick="addToCart('Empanada de Pollo', 2200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada de Carne</h4> <span class="text-amber-800 font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con papa y carne desmechada. (Aprox 180g)</p></div>
-          <button onclick="addToCart('Empanada de Carne', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Empanada de Carne</h4> <span class="text-black font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con papa y carne desmechada. (Aprox 180g)</p></div>
+          <button onclick="addToCart('Empanada de Carne', 2200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada Hawaiana</h4> <span class="text-amber-800 font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita rellena de piña, jamón y queso. (Aprox 180g)</p></div>
-          <button onclick="addToCart('Empanada Hawaiana', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Empanada Hawaiana</h4> <span class="text-black font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita rellena de piña, jamón y queso. (Aprox 180g)</p></div>
+          <button onclick="addToCart('Empanada Hawaiana', 2200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Empanada Ranchera</h4> <span class="text-amber-800 font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con tocineta, jamón, salchicha y arroz. (Aprox 180g)</p></div>
-          <button onclick="addToCart('Empanada Ranchera', 2200)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Empanada Ranchera</h4> <span class="text-black font-extrabold text-sm">$2.200</span></div><p class="text-stone-500 text-xs mb-3">Masa hojaldre frita con tocineta, jamón, salchicha y arroz. (Aprox 180g)</p></div>
+          <button onclick="addToCart('Empanada Ranchera', 2200)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.200)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Pastel de Yuca</h4> <span class="text-amber-800 font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Masa de yuca crujiente rellena de arroz, pollo y huevo. (Aprox 200g)</p></div>
-          <button onclick="addToCart('Pastel de Yuca', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Pastel de Yuca</h4> <span class="text-black font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Masa de yuca crujiente rellena de arroz, pollo y huevo. (Aprox 200g)</p></div>
+          <button onclick="addToCart('Pastel de Yuca', 2800)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Arepa de Huevo</h4> <span class="text-amber-800 font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Arepa de maíz amarillo crocante rellena de huevo y pollo. (Aprox 180g)</p></div>
-          <button onclick="addToCart('Arepa de Huevo', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Arepa de Huevo</h4> <span class="text-black font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Arepa de maíz amarillo crocante rellena de huevo y pollo. (Aprox 180g)</p></div>
+          <button onclick="addToCart('Arepa de Huevo', 2800)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
         </div>
 
         <div class="menu-item bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-1">
-          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-amber-950 item-name">Papa Rellena</h4> <span class="text-amber-800 font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Masa de papa artesanal frita, rellena de pollo, arroz y huevo. (Aprox 200g)</p></div>
-          <button onclick="addToCart('Papa Rellena', 2800)" class="w-full bg-amber-900 hover:bg-amber-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
+          <div><div class="flex justify-between items-start gap-2 mb-1"><h4 class="font-bold text-stone-900 item-name">Papa Rellena</h4> <span class="text-black font-extrabold text-sm">$2.800</span></div><p class="text-stone-500 text-xs mb-3">Masa de papa artesanal frita, rellena de pollo, arroz y huevo. (Aprox 200g)</p></div>
+          <button onclick="addToCart('Papa Rellena', 2800)" class="w-full bg-black hover:bg-stone-800 text-white font-medium py-2 rounded-xl text-xs transition">+ Agregar ($2.800)</button>
         </div>
       </div>
     </section>
 
     <!-- 🏫 VENTAS AL POR MAYOR & INSTITUCIONAL -->
-    <section id="institucional" class="menu-section bg-amber-950 text-amber-50 p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
+    <section id="institucional" class="menu-section bg-black text-stone-100 p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
       <div class="relative z-10 space-y-6">
         
-        <div class="border-b border-amber-800/40 pb-4">
-          <span class="bg-amber-800/60 text-amber-200 text-[10px] sm:text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+        <div class="border-b border-stone-800 pb-4">
+          <span class="bg-stone-800 text-stone-300 text-[10px] sm:text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-stone-700">
             Atención Especial para Entidades & Eventos
           </span>
-          <h2 class="text-2xl sm:text-4xl font-extrabold text-amber-100 mt-2 flex items-center gap-3">
-            <i class="fa-solid fa-building-columns text-amber-400"></i> Ventas Institucionales & Por Mayor
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2 flex items-center gap-3">
+            <i class="fa-solid fa-building-columns text-stone-300"></i> Ventas Institucionales & Por Mayor
           </h2>
-          <p class="text-stone-300 text-xs sm:text-sm mt-1 max-w-2xl">
+          <p class="text-stone-400 text-xs sm:text-sm mt-1 max-w-2xl">
             Surtimos cafeterías escolares, eventos universitarios, bazares y reuniones corporativas con precios preferenciales por volumen y producción fresca garantizada.
           </p>
         </div>
@@ -527,39 +527,39 @@
         <!-- TARJETAS DE BENEFICIOS -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           
-          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
-            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+          <div class="bg-stone-900 border border-stone-800 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center mb-3 text-white text-lg">
               <i class="fa-solid fa-percent"></i>
             </div>
-            <h4 class="font-bold text-sm text-amber-100">Descuentos por Volumen</h4>
-            <p class="text-stone-300 text-xs mt-1">Precios escalonados según la cantidad para pedidos periódicos o eventos masivos.</p>
+            <h4 class="font-bold text-sm text-white">Descuentos por Volumen</h4>
+            <p class="text-stone-400 text-xs mt-1">Precios escalonados según la cantidad para pedidos periódicos o eventos masivos.</p>
           </div>
 
-          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
-            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+          <div class="bg-stone-900 border border-stone-800 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center mb-3 text-white text-lg">
               <i class="fa-solid fa-truck-fast"></i>
             </div>
-            <h4 class="font-bold text-sm text-amber-100">Entregas Programadas</h4>
-            <p class="text-stone-300 text-xs mt-1">Despacho puntual en la sede de tu colegio, universidad o empresa desde temprano.</p>
+            <h4 class="font-bold text-sm text-white">Entregas Programadas</h4>
+            <p class="text-stone-400 text-xs mt-1">Despacho puntual en la sede de tu colegio, universidad o empresa desde temprano.</p>
           </div>
 
-          <div class="bg-amber-900/40 border border-amber-700/30 p-4 rounded-2xl">
-            <div class="w-10 h-10 rounded-xl bg-amber-800/50 flex items-center justify-center mb-3 text-amber-300 text-lg">
+          <div class="bg-stone-900 border border-stone-800 p-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center mb-3 text-white text-lg">
               <i class="fa-solid fa-box-open"></i>
             </div>
-            <h4 class="font-bold text-sm text-amber-100">Empaque Especial</h4>
-            <p class="text-stone-300 text-xs mt-1">Presentación individual o en cajas máster optimizadas para venta en cafeterías.</p>
+            <h4 class="font-bold text-sm text-white">Empaque Especial</h4>
+            <p class="text-stone-400 text-xs mt-1">Presentación individual o en cajas máster optimizadas para venta en cafeterías.</p>
           </div>
 
         </div>
 
         <!-- BOTÓN ACCIÓN WHATSAPP -->
-        <div class="bg-amber-900/60 border border-amber-600/40 p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="bg-stone-900 border border-stone-800 p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h4 class="font-bold text-sm sm:text-base text-white">¿Necesitas una cotización formal o degustación?</h4>
-            <p class="text-stone-300 text-xs">Habla directamente con nuestro asesor comercial de Richi's.</p>
+            <p class="text-stone-400 text-xs">Habla directamente con nuestro asesor comercial de Richi's.</p>
           </div>
-          <a href="https://wa.me/573115162966?text=Hola%20Richi's%2C%20quisiera%20solicitar%20informaci%C3%B3n%20para%20compras%20institucionales%2Fal%20por%20mayor." target="_blank" rel="noopener" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold px-6 py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm shadow-lg whitespace-nowrap">
+          <a href="https://wa.me/573115162966?text=Hola%20Richi's%2C%20quisiera%20solicitar%20informaci%C3%B3n%20para%20compras%20institucionales%2Fal%20por%20mayor." target="_blank" rel="noopener" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm shadow-lg whitespace-nowrap">
             <i class="fa-brands fa-whatsapp text-lg"></i>
             <span>Solicitar Cotización Mayorista</span>
           </a>
@@ -571,26 +571,26 @@
   </main>
 
   <!-- BOTÓN VOLVER ARRIBA -->
-  <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" class="hide fixed right-4 bottom-28 sm:bottom-24 z-40 w-11 h-11 rounded-full bg-amber-900 border border-amber-700 text-amber-100 shadow-lg flex items-center justify-center">
+  <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" class="hide fixed right-4 bottom-28 sm:bottom-24 z-40 w-11 h-11 rounded-full bg-black border border-stone-700 text-stone-100 shadow-lg flex items-center justify-center">
     <i class="fa-solid fa-chevron-up"></i>
   </button>
 
   <!-- BARRA FLOTANTE INFERIOR -->
-  <div class="fixed bottom-0 left-0 w-full bg-white/95 border-t border-amber-900/10 p-3 sm:p-4 backdrop-blur-lg z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+  <div class="fixed bottom-0 left-0 w-full bg-white/95 border-t border-stone-200 p-3 sm:p-4 backdrop-blur-lg z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
 
       <!-- CONTADOR Y TOTAL -->
       <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
         <div>
-          <span id="cartCount" class="bg-amber-100 text-amber-950 font-bold text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full border border-amber-900/20">0 ítems</span>
-          <div id="cartTotal" class="text-base sm:text-lg font-extrabold text-amber-950">$0</div>
+          <span id="cartCount" class="bg-stone-100 text-stone-900 font-bold text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full border border-stone-300">0 ítems</span>
+          <div id="cartTotal" class="text-base sm:text-lg font-extrabold text-black">$0</div>
         </div>
       </div>
 
       <!-- BOTONES -->
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <button onclick="openCartModal()" class="flex-1 sm:flex-none bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold px-4 py-2.5 rounded-xl border border-stone-300 transition flex items-center justify-center gap-2 text-xs sm:text-sm">
-          <i class="fa-solid fa-list-check text-amber-800"></i>
+          <i class="fa-solid fa-list-check text-black"></i>
           <span>Revisar Pedido</span>
         </button>
 
@@ -606,19 +606,19 @@
   <!-- MODAL PEDIDO -->
   <div id="cartModal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white border border-stone-200 w-full max-w-lg rounded-t-2xl sm:rounded-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
-      <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-amber-50/50">
-        <h3 class="font-bold text-amber-950 text-base flex items-center gap-2"><i class="fa-solid fa-basket-shopping text-amber-800"></i> Resumen de tu Antojo</h3>
+      <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-stone-50">
+        <h3 class="font-bold text-black text-base flex items-center gap-2"><i class="fa-solid fa-basket-shopping text-stone-800"></i> Resumen de tu Antojo</h3>
         <button onclick="closeCartModal()" class="text-stone-400 hover:text-stone-700 p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
       <div id="cartItemsList" class="p-4 overflow-y-auto space-y-3 flex-1 text-xs"></div>
       <div class="p-4 border-t border-stone-200 space-y-3 bg-stone-50">
         <div>
           <label class="text-[10px] uppercase font-bold text-stone-500">Nombre del cliente:</label>
-          <input type="text" id="clientName" placeholder="Tu nombre..." class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+          <input type="text" id="clientName" placeholder="Tu nombre..." class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-black">
         </div>
         <div>
           <label class="text-[10px] uppercase font-bold text-stone-500">Dirección o punto de entrega:</label>
-          <input type="text" id="clientAddress" placeholder="Ej: Calle 123 # 45-67 o Recojo en local" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+          <input type="text" id="clientAddress" placeholder="Ej: Calle 123 # 45-67 o Recojo en local" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-xs text-stone-800 focus:outline-none focus:border-black">
         </div>
         <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
           <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -771,13 +771,13 @@
         : cart.map((item, index) => `
             <div class="flex justify-between items-center bg-stone-50 p-2.5 rounded-xl border border-stone-200">
               <div>
-                <p class="font-bold text-amber-950">${item.name}</p>
-                <p class="text-amber-800 font-extrabold">$${(item.price * item.qty).toLocaleString('es-CO')}</p>
+                <p class="font-bold text-stone-900">${item.name}</p>
+                <p class="text-black font-extrabold">$${(item.price * item.qty).toLocaleString('es-CO')}</p>
               </div>
               <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border border-stone-300">
-                <button onclick="changeQty(${index}, -1)" class="text-stone-500 hover:text-stone-800 px-1.5">-</button>
-                <span class="font-bold text-amber-950 px-1">${item.qty}</span>
-                <button onclick="changeQty(${index}, 1)" class="text-stone-500 hover:text-stone-800 px-1.5">+</button>
+                <button onclick="changeQty(${index}, -1)" class="text-stone-500 hover:text-black px-1.5">-</button>
+                <span class="font-bold text-black px-1">${item.qty}</span>
+                <button onclick="changeQty(${index}, 1)" class="text-stone-500 hover:text-black px-1.5">+</button>
               </div>
             </div>`).join('');
 
